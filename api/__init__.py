@@ -13,7 +13,4 @@ def create_app(config_file='settings.py'):
     # Register blueprints
     app.register_blueprint(api)
 
-    # Register commands
-    app.cli.add_command(create)
-
     return app
