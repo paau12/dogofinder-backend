@@ -10,7 +10,7 @@ class Mascota(models.Model):
     raza_mascota = models.CharField(max_length=100)  # string
     descripcion_mascota = models.CharField(max_length=300)  # string
     codigo_qr = models.CharField(max_length=100)  # string
-    foto_mascota = models.ImageField(upload_to=None,
+    foto_mascota = models.ImageField(upload_to='api/resources/mascotas',
                                      height_field=None,
                                      width_field=None,
                                      max_length=100)  # image
