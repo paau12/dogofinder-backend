@@ -16,3 +16,6 @@ class Mascota(models.Model):
                                      max_length=100)  # image
     in_home = models.BooleanField(default=False)  # boolean
     id_usuario = models.CharField(max_length=100)  # foreign key
+
+    def __str__(self):
+        return self.nombre_mascota
