@@ -19,3 +19,6 @@ class Mascota(models.Model):
 
     def __str__(self):
         return self.nombre_mascota
+
+    def get_breed(self):
+        return self.nombre_mascota + ' es un perro de raza ' + self.raza_mascota + '.'
