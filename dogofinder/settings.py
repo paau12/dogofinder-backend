@@ -135,3 +135,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+"""
+    NOTE: Unrestricted access is fine for local development, but in a production environment you may need to restrict access to certain endpoints. Make sure to update this. Review the docs for more information.
+"""
+REST_FRAMEWORK = {  # New
+    'DEFAULT_PERMISSION_CLASSES': [],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
