@@ -33,8 +33,25 @@ def get_delete_update_mascota(request, pk):
 def get_post_mascotas(request):
     # Obtener todas las mascotas
     if request.method == 'GET':
-        return Response({})
+        mascotas = Mascota.objects.all()
+        serializer = MascotaSerializer(mascotas, many=True)
+        return Response(serializer.data)
 
     # Insertar un nuevo registro de mascota
-    elif request.method == 'POST':
-        return Response({})
+    if request.method == 'POST':
+        data = {
+            'nombre_mascota': request.data.get('nombre_mascota'),
+            'tipo_mascota': request.data.get('tipo_mascota'),
+            'raza_mascota': request.data.get('raza_mascota'),
+            'descripcion_mascota': request.data.get('descripcion_mascota'),
+            'codigo_qr': request.data.get('codigo_qr'),
+            'in_home': bool(request.data.get('in_home')),
+            'id_usuario': request.data.get('id_usuario')
+        }
+        serializer = MascotaSerializer(data=data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

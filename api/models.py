@@ -13,7 +13,8 @@ class Mascota(models.Model):
     foto_mascota = models.ImageField(upload_to='api/resources/mascotas',
                                      height_field=None,
                                      width_field=None,
-                                     max_length=100)  # image
+                                     max_length=100,
+                                     blank=True)  # image
     in_home = models.BooleanField(default=False)  # boolean
     id_usuario = models.CharField(max_length=100)  # foreign key
 
