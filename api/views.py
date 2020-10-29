@@ -11,7 +11,7 @@ from .serializers import MascotaSerializer
 @api_view(['GET', 'DELETE', 'PUT'])
 def get_delete_update_mascota(request, pk):
     try:
-        mascota = Mascota.objects.get(pk=pk)
+        mascota = Mascota.objects.get(id_mascota=pk)
 
     except Mascota.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
@@ -38,7 +38,7 @@ def get_post_mascotas(request):
         return Response(serializer.data)
 
     # Insertar un nuevo registro de mascota
-    if request.method == 'POST':
+    elif request.method == 'POST':
         data = {
             'nombre_mascota': request.data.get('nombre_mascota'),
             'tipo_mascota': request.data.get('tipo_mascota'),
