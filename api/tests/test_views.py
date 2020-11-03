@@ -166,3 +166,43 @@ class UpdateSingleMascotaTest(TestCase):
             content_type='application/json'
         )
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+
+# Test - Delete single Mascota
+class DeleteSingleMascotaTest(TestCase):
+    """
+        Test module for deleting an existing mascota record.
+    """
+
+    def setUp(self):
+        self.laika = Mascota.objects.create(
+            nombre_mascota="Laika",
+            tipo_mascota="Perro",
+            raza_mascota="Chiweenie",
+            descripcion_mascota="Laika es una perra de raza pequeña.",
+            codigo_qr="1231231212",
+            in_home=True,
+            id_usuario="312324123"
+        )
+
+        self.missy = Mascota.objects.create(
+            nombre_mascota="Missy",
+            tipo_mascota="Perro",
+            raza_mascota="Chihuahua",
+            descripcion_mascota="Missy es una chihuahua pequeña.",
+            codigo_qr="1231231212",
+            in_home=True,
+            id_usuario="312324123"
+        )
+
+    def test_valid_delete_mascota(self):
+        response = client.delete(
+            reverse('get_delete_update_mascota', kwargs={'pk': self.laika.pk})
+        )
+        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+    def test_invalid_delete_mascota(self):
+        response = client.delete(
+            reverse('get_delete_update_mascota', kwargs={'pk': 30})
+        )
+        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
