@@ -18,7 +18,8 @@ def get_delete_update_mascota(request, pk):
 
     # Obtener detalles de una mascota
     if request.method == 'GET':
-        return Response({})
+        serializer = MascotaSerializer(mascota)
+        return Response(serializer.data)
 
     # Eliminar una mascota
     elif request.method == 'DELETE':
@@ -26,7 +27,13 @@ def get_delete_update_mascota(request, pk):
 
     # Actualizar detalles de una mascota
     elif request.method == 'PUT':
-        return Response({})
+        serializer = MascotaSerializer(mascota, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_204_NO_CONTENT)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['GET', 'POST'])
