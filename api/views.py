@@ -23,7 +23,8 @@ def get_delete_update_mascota(request, pk):
 
     # Eliminar una mascota
     elif request.method == 'DELETE':
-        return Response({})
+        mascota.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
     # Actualizar detalles de una mascota
     elif request.method == 'PUT':
