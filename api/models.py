@@ -1,6 +1,7 @@
 '''
     TODO:
         - Crear modelo Usuario ------------------ [x]
+        - Crear modelo Mascota ------------------ [x]
         - Crear modelo Mascota_perdida ---------- [x]
         - Crear modelo Mascota_encontrada ------- [x]
         - Crear modelo Reporte ------------------ [x]
@@ -64,6 +65,7 @@ class Mascota(models.Model):
     id_usuario = models.ForeignKey(
             Usuario,
             default=None,
+            db_column="id_usuario",
             verbose_name="usuario",
             on_delete=models.CASCADE
         )  # Foreign Key
@@ -89,6 +91,7 @@ class Mascota_perdida(models.Model):
             Mascota,
             default=None,
             verbose_name="mascota",
+            db_column="id_mascota",
             on_delete=models.SET_DEFAULT
         )  # Foreign Key
 
@@ -99,7 +102,7 @@ class Mascota_perdida(models.Model):
         pass
 
 
-# Modelo para mascota perdida.
+# Modelo para mascota encontrada.
 class Mascota_encontrada(models.Model):
     id_mascota_encontrada = models.AutoField(
         unique=True,
@@ -109,6 +112,7 @@ class Mascota_encontrada(models.Model):
     id_mascota = models.ForeignKey(
             Mascota,
             default=None,
+            db_column="id_mascota",
             verbose_name="mascota",
             on_delete=models.SET_DEFAULT
         )  # Foreign Key
@@ -134,12 +138,14 @@ class Reporte(models.Model):
     id_usuario = models.ForeignKey(
         Usuario,
         default=None,
+        db_column="id_usuario",
         verbose_name="usuario",
         on_delete=models.CASCADE
     )  # Foreign Key
     id_mascota = models.ForeignKey(
         Mascota,
         default=None,
+        db_column="id_mascota",
         verbose_name="mascota",
         on_delete=models.CASCADE
     )  # Foreign Key
@@ -171,6 +177,7 @@ class Reporte_avistado(models.Model):
     id_reporte = models.ForeignKey(
             Reporte,
             default=None,
+            db_column="id_reporte",
             verbose_name="reporte",
             on_delete=models.SET_DEFAULT
         )  # Foreign Key
@@ -204,6 +211,7 @@ class Reporte_encontrado(models.Model):
     id_reporte = models.ForeignKey(
             Reporte,
             default=None,
+            db_column="id_reporte",
             verbose_name="reporte",
             on_delete=models.SET_DEFAULT
         )  # Foreign Key
@@ -227,6 +235,7 @@ class Reporte_perdido(models.Model):
     id_reporte = models.ForeignKey(
             Reporte,
             default=None,
+            db_column="id_reporte",
             verbose_name="reporte",
             on_delete=models.SET_DEFAULT
         )  # Foreign Key
