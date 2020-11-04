@@ -98,6 +98,7 @@ class Mascota_perdida(models.Model):
     def __str__(self):
         pass
 
+
 # Modelo para mascota perdida.
 class Mascota_encontrada(models.Model):
     id_mascota_encontrada = models.AutoField(
@@ -131,17 +132,17 @@ class Reporte(models.Model):
     descripcion_reporte = models.CharField(max_length=100)  # String
 
     id_usuario = models.ForeignKey(
-            Usuario,
-            default=None,
-            verbose_name="usuario",
-            on_delete=models.CASCADE
-        )  # Foreign Key
+        Usuario,
+        default=None,
+        verbose_name="usuario",
+        on_delete=models.CASCADE
+    )  # Foreign Key
     id_mascota = models.ForeignKey(
-            Mascota,
-            default=None,
-            verbose_name="mascota",
-            on_delete=models.CASCADE
-        )  # Foreign Key
+        Mascota,
+        default=None,
+        verbose_name="mascota",
+        on_delete=models.CASCADE
+    )  # Foreign Key
 
     class Meta:
         verbose_name_plural = "reporte"
