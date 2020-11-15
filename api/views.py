@@ -1,7 +1,7 @@
 '''
     TODO:
         |----------------------------------------|  A  |  R  |  M  |  C  |
-        |- Crear view Usuario ------------------ | [x] | [x] | [x] | [x] |
+        |- Crear view Usuario ------------------ | [x] | [ ] | [ ] | [ ] |
         |- Crear view Mascota ------------------ | [x] | [x] | [x] | [x] |
         |- Crear view Mascota_perdida ---------- | [x] | [x] | [x] | [x] |
         |- Crear view Mascota_encontrada ------- | [x] | [x] | [x] | [x] |
@@ -49,13 +49,15 @@ def prueba_request(request):
 ''' --------| Views para clase Reporte. |-------- '''
 
 # Agrega un objeto reporte a la base de datos.
+
+
 @api_view(['POST'])
 def post_reporte(request):
-    data ={
-        'fecha_reporte':request.data.get('fecha_reporte'),
-        'descripcion_reporte':request.data.get('descripcion_reporte'),
-        'id_usuario':request.data.get('id_usuario'),
-        'id_mascota':request.data.get('id_mascota'),
+    data = {
+        'fecha_reporte': request.data.get('fecha_reporte'),
+        'descripcion_reporte': request.data.get('descripcion_reporte'),
+        'id_usuario': request.data.get('id_usuario'),
+        'id_mascota': request.data.get('id_mascota'),
     }
     serializer = Reporte_serializer(data=data)
     if serializer.is_valid():
@@ -104,12 +106,14 @@ def GPD_reporte(request, id):
 ''' --------| Views para clase Reporte_avistado. |-------- '''
 
 # Agrega un objeto reporte a la base de datos.
+
+
 @api_view(['POST'])
 def post_reporte_avistado(request):
-    data ={
-        'lugar_avistado':request.data.get('lugar_avistado'),
-        'imagen_avistamiento':request.data.get('imagen_avistamiento'),
-        'id_reporte':request.data.get('id_reporte'),
+    data = {
+        'lugar_avistado': request.data.get('lugar_avistado'),
+        'imagen_avistamiento': request.data.get('imagen_avistamiento'),
+        'id_reporte': request.data.get('id_reporte'),
     }
     serializer = Reporte_avistado_serializer(data=data)
     if serializer.is_valid():
@@ -134,13 +138,15 @@ def GPD_reporte_avistado(request, id):
     if request.method == 'GET':
         # Si el request es de tipo GET, se retorna el objeto con
         # todos todos sus campos.
-        reporte_avistado_serializado = Reporte_avistado_serializer(reporte_avistado)
+        reporte_avistado_serializado = Reporte_avistado_serializer(
+            reporte_avistado)
         return Response(reporte_avistado_serializado.data)
 
     elif request.method == 'PUT':
         # Si el request es de tipo PUT, se actualizan los campos del
         # objeto.
-        serializer = Reporte_avistado_serializer(reporte_avistado, data=request.data)
+        serializer = Reporte_avistado_serializer(
+            reporte_avistado, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -158,13 +164,15 @@ def GPD_reporte_avistado(request, id):
 ''' --------| Views para clase Reporte_encontrado. |-------- '''
 
 # Agrega un objeto reporte a la base de datos.
+
+
 @api_view(['POST'])
 def post_reporte_encontrado(request):
     data = {
-        'lugar_encontrado':request.data.get('lugar_encontrado'),
-        'imagen_encontrado':request.data.get('imagen_encontrado'),
-        'mascota_recojida':request.data.get('mascota_recojida'),
-        'id_reporte':request.data.get('id_reporte'),
+        'lugar_encontrado': request.data.get('lugar_encontrado'),
+        'imagen_encontrado': request.data.get('imagen_encontrado'),
+        'mascota_recojida': request.data.get('mascota_recojida'),
+        'id_reporte': request.data.get('id_reporte'),
     }
     serializer = Reporte_encontrado_serializer(data=data)
     if serializer.is_valid():
@@ -189,13 +197,15 @@ def GPD_reporte_encontrado(request, id):
     if request.method == 'GET':
         # Si el request es de tipo GET, se retorna el objeto con
         # todos todos sus campos.
-        reporte_encontrado_serializado = Reporte_encontrado_serializer(reporte_encontrado)
+        reporte_encontrado_serializado = Reporte_encontrado_serializer(
+            reporte_encontrado)
         return Response(reporte_encontrado_serializado.data)
 
     elif request.method == 'PUT':
         # Si el request es de tipo PUT, se actualizan los campos del
         # objeto.
-        serializer = Reporte_encontrado_serializer(reporte_encontrado, data=request.data)
+        serializer = Reporte_encontrado_serializer(
+            reporte_encontrado, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -213,11 +223,13 @@ def GPD_reporte_encontrado(request, id):
 ''' --------| Views para clase Reporte_encontrado. |-------- '''
 
 # Agrega un objeto reporte a la base de datos.
+
+
 @api_view(['POST'])
 def post_reporte_perdido(request):
     data = {
-        'ultimo_lugar_visto':request.data.get('ultimo_lugar_visto'),
-        'id_reporte':request.data.get('id_reporte'),
+        'ultimo_lugar_visto': request.data.get('ultimo_lugar_visto'),
+        'id_reporte': request.data.get('id_reporte'),
     }
     serializer = Reporte_perdido_serializer(data=data)
     if serializer.is_valid():
@@ -242,13 +254,15 @@ def GPD_reporte_perdido(request, id):
     if request.method == 'GET':
         # Si el request es de tipo GET, se retorna el objeto con
         # todos todos sus campos.
-        reporte_perdido_serializado = Reporte_perdido_serializer(reporte_perdido)
+        reporte_perdido_serializado = Reporte_perdido_serializer(
+            reporte_perdido)
         return Response(reporte_perdido_serializado.data)
 
     elif request.method == 'PUT':
         # Si el request es de tipo PUT, se actualizan los campos del
         # objeto.
-        serializer = Reporte_perdido_serializer(reporte_perdido, data=request.data)
+        serializer = Reporte_perdido_serializer(
+            reporte_perdido, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -266,16 +280,18 @@ def GPD_reporte_perdido(request, id):
 ''' --------| Views para clase Usuario. |-------- '''
 
 # Agrega un objeto usuario a la base de datos.
+
+
 @api_view(['POST'])
 def post_usuario(request):
     data = {
-        'correo_duenio':request.data.get('correo_duenio'),
-        'nombre_duenio':request.data.get('nombre_duenio'),
-        'pais':request.data.get('pais'),
-        'ciudad':request.data.get('ciudad'),
-        'colonia':request.data.get('colonia'),
-        'calle':request.data.get('calle'),
-        'numero':request.data.get('numero'),
+        'correo_duenio': request.data.get('correo_duenio'),
+        'nombre_duenio': request.data.get('nombre_duenio'),
+        'pais': request.data.get('pais'),
+        'ciudad': request.data.get('ciudad'),
+        'colonia': request.data.get('colonia'),
+        'calle': request.data.get('calle'),
+        'numero': request.data.get('numero'),
     }
     serializer = Usuario_serializer(data=data)
     if serializer.is_valid():
@@ -322,6 +338,7 @@ def GPD_usuario(request, id):
 
 
 ''' --------| Views para clase Mascota. |-------- '''
+
 
 @api_view(['GET', 'DELETE', 'PUT'])
 def get_delete_update_mascota(request, id):
@@ -383,10 +400,12 @@ def get_post_mascotas(request):
 ''' --------| Views para clase Mascota_perdida. |-------- '''
 
 # Agrega un objeto mascota_perdida a la base de datos.
+
+
 @api_view(['POST'])
 def post_mascota_perdida(request):
     data = {
-        'id_mascota':request.data.get('id_mascota'),
+        'id_mascota': request.data.get('id_mascota'),
     }
     serializer = Mascota_perdida_serializer(data=data)
     if serializer.is_valid():
@@ -411,13 +430,15 @@ def GPD_mascota_perdida(request, id):
     if request.method == 'GET':
         # Si el request es de tipo GET, se retorna el objeto con
         # todos todos sus campos.
-        mascota_perdida_serializado = Mascota_perdida_serializer(mascota_perdida)
+        mascota_perdida_serializado = Mascota_perdida_serializer(
+            mascota_perdida)
         return Response(mascota_perdida_serializado.data)
 
     elif request.method == 'PUT':
         # Si el request es de tipo PUT, se actualizan los campos del
         # objeto.
-        serializer = Mascota_perdida_serializer(mascota_perdida, data=request.data)
+        serializer = Mascota_perdida_serializer(
+            mascota_perdida, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
@@ -435,10 +456,12 @@ def GPD_mascota_perdida(request, id):
 ''' --------| Views para clase Mascota_encontrada. |-------- '''
 
 # Agrega un objeto mascota_encontrada a la base de datos.
+
+
 @api_view(['POST'])
 def post_mascota_encontrada(request):
     data = {
-        'id_mascota':request.data.get('id_mascota'),
+        'id_mascota': request.data.get('id_mascota'),
     }
     serializer = Mascota_encontrada_serializer(data=data)
     if serializer.is_valid():
@@ -454,7 +477,8 @@ def GPD_mascota_encontrada(request, id):
 
     try:
         # Se trata de cargar un objeto Usuario.
-        mascota_encontrada = Mascota_encontrada.objects.get(id_mascota_encontrada=id)
+        mascota_encontrada = Mascota_encontrada.objects.get(
+            id_mascota_encontrada=id)
 
     except Mascota_encontrada.DoesNotExist:
         # Si este no existe se retorna una excepcion 404.
@@ -463,13 +487,15 @@ def GPD_mascota_encontrada(request, id):
     if request.method == 'GET':
         # Si el request es de tipo GET, se retorna el objeto con
         # todos todos sus campos.
-        mascota_encontrada_serializado = Mascota_encontrada_serializer(mascota_encontrada)
+        mascota_encontrada_serializado = Mascota_encontrada_serializer(
+            mascota_encontrada)
         return Response(mascota_encontrada_serializado.data)
 
     elif request.method == 'PUT':
         # Si el request es de tipo PUT, se actualizan los campos del
         # objeto.
-        serializer = Mascota_encontrada_serializer(mascota_encontrada, data=request.data)
+        serializer = Mascota_encontrada_serializer(
+            mascota_encontrada, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
