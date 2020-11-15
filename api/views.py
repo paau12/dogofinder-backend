@@ -48,9 +48,8 @@ def prueba_request(request):
 
 ''' --------| Views para clase Reporte. |-------- '''
 
+
 # Agrega un objeto reporte a la base de datos.
-
-
 @api_view(['POST'])
 def post_reporte(request):
     data = {
@@ -105,9 +104,8 @@ def GPD_reporte(request, id):
 
 ''' --------| Views para clase Reporte_avistado. |-------- '''
 
+
 # Agrega un objeto reporte a la base de datos.
-
-
 @api_view(['POST'])
 def post_reporte_avistado(request):
     data = {
@@ -163,9 +161,8 @@ def GPD_reporte_avistado(request, id):
 
 ''' --------| Views para clase Reporte_encontrado. |-------- '''
 
+
 # Agrega un objeto reporte a la base de datos.
-
-
 @api_view(['POST'])
 def post_reporte_encontrado(request):
     data = {
@@ -222,9 +219,8 @@ def GPD_reporte_encontrado(request, id):
 
 ''' --------| Views para clase Reporte_encontrado. |-------- '''
 
+
 # Agrega un objeto reporte a la base de datos.
-
-
 @api_view(['POST'])
 def post_reporte_perdido(request):
     data = {
@@ -279,9 +275,8 @@ def GPD_reporte_perdido(request, id):
 
 ''' --------| Views para clase Usuario. |-------- '''
 
+
 # Agrega un objeto usuario a la base de datos.
-
-
 @api_view(['POST'])
 def post_usuario(request):
     data = {
@@ -399,9 +394,8 @@ def get_post_mascotas(request):
 
 ''' --------| Views para clase Mascota_perdida. |-------- '''
 
+
 # Agrega un objeto mascota_perdida a la base de datos.
-
-
 @api_view(['POST'])
 def post_mascota_perdida(request):
     data = {
@@ -455,9 +449,8 @@ def GPD_mascota_perdida(request, id):
 
 ''' --------| Views para clase Mascota_encontrada. |-------- '''
 
+
 # Agrega un objeto mascota_encontrada a la base de datos.
-
-
 @api_view(['POST'])
 def post_mascota_encontrada(request):
     data = {
