@@ -5,4 +5,4 @@ from . import serializers
 
 class MascotaViewset(viewsets.ModelViewSet):
     queryset = models.Mascota.objects.all()
-    serializer_class = serializers.MascotaSerializer
+    serializer_class = serializers.Mascota_serializer

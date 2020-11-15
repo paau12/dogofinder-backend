@@ -1,16 +1,76 @@
-from django.conf.urls import url
+from django.urls import path
 from . import views
 
 
 urlpatterns = [
-    url(
-        r'^api/v1/mascotas/(?P<pk>[0-9]+)$',
+    path(
+        'api/v1/mascotas/<int:id>',
         views.get_delete_update_mascota,
         name='get_delete_update_mascota'
     ),
-    url(
-        r'^api/v1/mascotas/$',
+    path(
+        'api/v1/mascotas/',
         views.get_post_mascotas,
         name='get_post_mascotas'
-    )
+    ),
+    path(
+        'api/v1/mascota_perdida/<int:id>',
+        views.GPD_mascota_perdida,
+        name='GPD_mascota_perdida'
+    ),
+    path(
+        'api/v1/mascota_perdida/',
+        views.post_mascota_perdida,
+        name='post_mascota_perdida'
+    ),
+    path(
+        'api/v1/mascota_encontrada/<int:id>',
+        views.GPD_mascota_encontrada,
+        name='GPD_mascota_encontrada'
+    ),
+    path(
+        'api/v1/mascota_encontrada/',
+        views.post_mascota_encontrada,
+        name='post_mascota_encontrada'
+    ),
+    path(
+        'api/v1/usuario/<int:id>',
+        views.GPD_usuario,
+        name='GPD_usuario'
+    ),
+    path(
+        'api/v1/usuario/',
+        views.post_usuario,
+        name='post_usuario'
+    ),
+    path(
+        'api/v1/reporte/<int:id>',
+        views.GPD_reporte,
+        name='GPD_reporte'
+    ),
+    path(
+        'api/v1/reporte/',
+        views.post_reporte,
+        name='post_reporte'
+    ),
+    path(
+        'api/v1/reporte/<int:id>',
+        views.GPD_reporte,
+        name='GPD_reporte'
+    ),
+    path(
+        'api/v1/reporte_avistado/',
+        views.post_reporte_avistado,
+        name='GPD_reporte_avistado'
+    ),
+    path(
+        'api/v1/reporte_encontrado/',
+        views.post_reporte_encontrado,
+        name='GPD_reporte_encontrado'
+    ),
+    path(
+        'api/v1/reporte_perdido/',
+        views.post_reporte_perdido,
+        name='GPD_reporte_perdido'
+    ),
 ]

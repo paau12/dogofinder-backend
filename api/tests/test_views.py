@@ -3,7 +3,7 @@ from rest_framework import status
 from django.test import TestCase, Client
 from django.urls import reverse
 from ..models import Mascota
-from ..serializers import MascotaSerializer
+from ..serializers import Mascota_serializer
 
 
 # Initialize APIClient app
@@ -53,7 +53,7 @@ class GetAllMascotasTest(TestCase):
 
         # get data from db
         mascotas = Mascota.objects.all()
-        serializer = MascotaSerializer(mascotas, many=True)
+        serializer = Mascota_serializer(mascotas, many=True)
 
         self.assertEqual(response.data, serializer.data)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
