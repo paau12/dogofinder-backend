@@ -43,7 +43,16 @@ class UsuarioRegistroSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UsuarioRegistro
-        fields = '__all__'
+        fields = ['username', 'email', 'password', 'confirm_password']
+
+    def save(self):
+        usuario_registro = UsuarioRegistro(
+            username=self.validated_data['username'],
+            email=self.validated_data['email'],
+            password=self.validated_data['password']
+        )
+        usuario_registro.save()
+        return usuario_registro
 
 
 ''' --------| Serializador para Reporte. |-------- '''

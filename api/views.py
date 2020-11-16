@@ -290,12 +290,20 @@ def crear_usuario(request):
 
     if serializer.is_valid():
         # Validar contraseñas
-        if data['password'] == data['confirm_password']:
-            serializer.save()
+        if data['password'] != data['confirm_password']:
             return Response(
-                {'message': 'Usuario creado con exito',
-                 'data': serializer.data},
-                status=status.HTTP_201_CREATED)
+                {'error': 'Las contraseñas no coinciden.'},
+                status=status.HTTP_406_NOT_ACCEPTABLE)
+
+        serializer.save()
+        return Response(
+            {'message': 'Usuario creado con exito.',
+                'data': serializer.data},
+            status=status.HTTP_201_CREATED)
+
+    return Response(
+        {'error': 'No se pudo validar la información.'},
+        status=status.HTTP_406_NOT_ACCEPTABLE)
 
 
 # Agrega un objeto usuario a la base de datos.
