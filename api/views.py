@@ -285,31 +285,20 @@ def GPD_reporte_perdido(request, id):
 # Registrar usuarios
 @api_view(['POST'])
 def crear_usuario(request):
-    data = {
-        'username': request.data.get('username'),
-        'email': request.data.get('email'),
-        'password': request.data.get('password'),
-        'confirm_password': request.data.get('confirm_password'),
-    }
-
     serializer = UsuarioRegistroSerializer(data=request.data)
+    data = {}
 
     if serializer.is_valid():
-        # Validar contraseñas
-        if data['password'] != data['confirm_password']:
-            return Response(
-                {'error': 'Las contraseñas no coinciden.'},
-                status=status.HTTP_406_NOT_ACCEPTABLE)
+        # Las validaciones se hacen en el método 'save' sobre-escrito en RegistroUsuarioSerializer
+        usuario_registro = serializer.save()
+        data['response'] = "Usuario registrado con exito"
+        data['email'] = usuario_registro.email
+        data['username'] = usuario_registro.username
 
-        serializer.save()
-        return Response(
-            {'message': 'Usuario creado con exito.',
-                'data': serializer.data},
-            status=status.HTTP_201_CREATED)
+    else:
+        data = serializer.errors
 
-    return Response(
-        {'error': 'No se pudo validar la información.'},
-        status=status.HTTP_406_NOT_ACCEPTABLE)
+    return Response(data)
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
