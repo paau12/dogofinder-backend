@@ -1,6 +1,8 @@
 from django.urls import path
 from . import views
 
+from rest_framework.authtoken.views import obtain_auth_token
+
 
 urlpatterns = [
     path(
@@ -42,6 +44,11 @@ urlpatterns = [
         'api/v1/registro/',
         views.crear_usuario,
         name='crear_usuario'
+    ),
+    path(
+        'api/v1/login/',
+        obtain_auth_token,
+        name='login'
     ),
     path(
         'api/v1/usuario/',

@@ -294,6 +294,8 @@ def crear_usuario(request):
         data['response'] = "Usuario registrado con exito"
         data['email'] = usuario_registro.email
         data['username'] = usuario_registro.username
+        token = Token.objects.get(user=usuario_registro).key
+        data['token'] = token
 
     else:
         data = serializer.errors
