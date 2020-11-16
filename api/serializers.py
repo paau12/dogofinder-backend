@@ -4,6 +4,7 @@ from .models import *
 
 ''' --------| Serializador para Mascota. |-------- '''
 
+
 # Serializador para clase Mascota.
 class Mascota_serializer(serializers.ModelSerializer):
     class Meta:
@@ -27,6 +28,7 @@ class Mascota_encontrada_serializer(serializers.ModelSerializer):
 
 ''' --------| Serializador para Usuario. |-------- '''
 
+
 # Serializador para clase Usuario.
 class Usuario_serializer(serializers.ModelSerializer):
     class Meta:
@@ -34,7 +36,18 @@ class Usuario_serializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+# Serializador para registro de usuario
+class UsuarioRegistroSerializer(serializers.ModelSerializer):
+    confirm_password = serializers.CharField(
+        style={'input_type': 'password'}, write_only=True)
+
+    class Meta:
+        model = UsuarioRegistro
+        fields = '__all__'
+
+
 ''' --------| Serializador para Reporte. |-------- '''
+
 
 # Serializador para clase Reporte.
 class Reporte_serializer(serializers.ModelSerializer):

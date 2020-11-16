@@ -276,6 +276,28 @@ def GPD_reporte_perdido(request, id):
 ''' --------| Views para clase Usuario. |-------- '''
 
 
+# Registrar usuarios
+@api_view(['POST'])
+def crear_usuario(request):
+    data = {
+        'username': request.data.get('username'),
+        'email': request.data.get('email'),
+        'password': request.data.get('password'),
+        'confirm_password': request.data.get('confirm_password'),
+    }
+
+    serializer = UsuarioRegistroSerializer(data=request.data)
+
+    if serializer.is_valid():
+        # Validar contraseñas
+        if data['password'] == data['confirm_password']:
+            serializer.save()
+            return Response(
+                {'message': 'Usuario creado con exito',
+                 'data': serializer.data},
+                status=status.HTTP_201_CREATED)
+
+
 # Agrega un objeto usuario a la base de datos.
 @api_view(['POST'])
 def post_usuario(request):
