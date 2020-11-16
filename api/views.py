@@ -9,6 +9,7 @@
         |- Crear view Reporte_avistado --------- | [x] | [x] | [x] | [x] |
         |- Crear view Reporte_perdido ---------- | [x] | [x] | [x] | [x] |
         |- Crear view Reporte_encontrado ------- | [x] | [x] | [x] | [x] |
+        |- Generar autenticación por token ----- | [ ] | [ ] | [ ] | [ ] |
         |----------------------------------------------------------------|
         |- A: Actualizar.                                                |
         |- R: Remover.                                                   |
@@ -19,6 +20,11 @@
 
 
 from django.shortcuts import render
+
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
 
 from rest_framework import status
 from rest_framework.decorators import api_view
@@ -304,6 +310,12 @@ def crear_usuario(request):
     return Response(
         {'error': 'No se pudo validar la información.'},
         status=status.HTTP_406_NOT_ACCEPTABLE)
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 
 # Agrega un objeto usuario a la base de datos.
