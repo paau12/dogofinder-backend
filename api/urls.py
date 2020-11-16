@@ -39,6 +39,11 @@ urlpatterns = [
         name='GPD_usuario'
     ),
     path(
+        'api/v1/registro/',
+        views.crear_usuario,
+        name='crear_usuario'
+    ),
+    path(
         'api/v1/usuario/',
         views.post_usuario,
         name='post_usuario'
