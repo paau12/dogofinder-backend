@@ -44,9 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Local
-    'api',  # New
-    'rest_framework',  # New
-
+    'api',
+    'rest_framework',
+    'rest_framework.authtoken',  # New
 ]
 
 MIDDLEWARE = [
@@ -85,17 +85,17 @@ WSGI_APPLICATION = 'dogofinder.wsgi.application'
 
 DATABASES = {
     'default': {
-         'ENGINE': 'django.db.backends.sqlite3',
-         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 
-#    default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': os.getenv('NAME'),
-#        'USER': os.getenv('USER'),
-#        'PASSWORD': os.getenv('PASSWORD'),
-#        'HOST': os.getenv('HOST')
-#    }
+    #    default': {
+    #        'ENGINE': 'django.db.backends.postgresql',
+    #        'NAME': os.getenv('NAME'),
+    #        'USER': os.getenv('USER'),
+    #        'PASSWORD': os.getenv('PASSWORD'),
+    #        'HOST': os.getenv('HOST')
+    #    }
 }
 
 
@@ -143,7 +143,12 @@ STATIC_URL = '/static/'
     access to certain endpoints. Make sure to update this.
     Review the docs for more information.
 """
-REST_FRAMEWORK = {  # New
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication'
+    ],
     'DEFAULT_PERMISSION_CLASSES': [],
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
+
+AUTH_USER_MODEL = 'api.UsuarioRegistro'

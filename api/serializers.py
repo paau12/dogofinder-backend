@@ -44,13 +44,25 @@ class UsuarioRegistroSerializer(serializers.ModelSerializer):
     class Meta:
         model = UsuarioRegistro
         fields = ['username', 'email', 'password', 'confirm_password']
+        extra_kwargs = {
+            'password': {'write_only': True}
+        }
 
     def save(self):
         usuario_registro = UsuarioRegistro(
             username=self.validated_data['username'],
             email=self.validated_data['email'],
-            password=self.validated_data['password']
         )
+
+        password = self.validated_data['password']
+        confirm_password = self.validated_data['confirm_password']
+
+        if password != confirm_password:
+            raise serializers.ValidationError(
+                {'error': 'Las contraseñas deben coincidir.'})
+
+        usuario_registro.set_password(password)
+
         usuario_registro.save()
         return usuario_registro
 

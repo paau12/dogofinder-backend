@@ -9,6 +9,7 @@
         |- Crear view Reporte_avistado --------- | [x] | [x] | [x] | [x] |
         |- Crear view Reporte_perdido ---------- | [x] | [x] | [x] | [x] |
         |- Crear view Reporte_encontrado ------- | [x] | [x] | [x] | [x] |
+        |- Generar autenticación por token ----- | [ ] | [ ] | [ ] | [ ] |
         |----------------------------------------------------------------|
         |- A: Actualizar.                                                |
         |- R: Remover.                                                   |
@@ -20,30 +21,17 @@
 
 from django.shortcuts import render
 
+from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from rest_framework.authtoken.models import Token
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 from .models import *
 from .serializers import *
-
-
-@api_view(['GET', 'PUT', 'DELETE', 'POST'])
-def prueba_request(request):
-    if request.method == 'GET':
-        return Response('Request GET')
-
-    elif request.method == 'PUT':
-        return Response('Request PUT')
-
-    elif request.method == 'DELETE':
-        return Response('Request DELETE')
-
-    elif request.method == 'POST':
-        return Response('Request POST {}'.format(request.data.get('id')))
-
-    else:
-        return Response('Request desconocido')
 
 
 ''' --------| Views para clase Reporte. |-------- '''
@@ -279,31 +267,28 @@ def GPD_reporte_perdido(request, id):
 # Registrar usuarios
 @api_view(['POST'])
 def crear_usuario(request):
-    data = {
-        'username': request.data.get('username'),
-        'email': request.data.get('email'),
-        'password': request.data.get('password'),
-        'confirm_password': request.data.get('confirm_password'),
-    }
-
     serializer = UsuarioRegistroSerializer(data=request.data)
+    data = {}
 
     if serializer.is_valid():
-        # Validar contraseñas
-        if data['password'] != data['confirm_password']:
-            return Response(
-                {'error': 'Las contraseñas no coinciden.'},
-                status=status.HTTP_406_NOT_ACCEPTABLE)
+        # Las validaciones se hacen en el método 'save' sobre-escrito en RegistroUsuarioSerializer
+        usuario_registro = serializer.save()
+        data['response'] = "Usuario registrado con exito"
+        data['email'] = usuario_registro.email
+        data['username'] = usuario_registro.username
+        token = Token.objects.get(user=usuario_registro).key
+        data['token'] = token
 
-        serializer.save()
-        return Response(
-            {'message': 'Usuario creado con exito.',
-                'data': serializer.data},
-            status=status.HTTP_201_CREATED)
+    else:
+        data = serializer.errors
 
-    return Response(
-        {'error': 'No se pudo validar la información.'},
-        status=status.HTTP_406_NOT_ACCEPTABLE)
+    return Response(data)
+
+
+@receiver(post_save, sender=settings.AUTH_USER_MODEL)
+def create_auth_token(sender, instance=None, created=False, **kwargs):
+    if created:
+        Token.objects.create(user=instance)
 
 
 # Agrega un objeto usuario a la base de datos.
