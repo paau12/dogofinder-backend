@@ -91,7 +91,6 @@ Retorna los campos de un objeto Mascota dado un id.
 	"in_home": true,
 	"id_usuario": 2,
     },
-    ...
 ]
 ```
 - `400 Bad Request` si la petición esta mal formulada
@@ -193,7 +192,6 @@ Detalles sobre la clase Mascota_perdida.
 		"id_mascota_perdida": 5,
 		"id_mascota": 5,
 	},
-	...
 ]
 ```
 - `204 No Content` si el elemento se modifico correctamente
@@ -287,7 +285,6 @@ Retorna todas las mascotas encontradas en la tabla.
 		"id_mascota_encontrada": 5,
 		"id_mascota": 5,
 	},
-	...
 ]
 ```
 - `204 No Content` si el elemento se modifico correctamente
@@ -524,7 +521,6 @@ Detalles sobre la clase Reporte.
 		"id_usuario": 5,
 		"id_mascota": 5,
 	},
-	...
 ]
 ```
 - `204 No Content` si el elemento se modifico correctamente
@@ -624,7 +620,6 @@ Elimina un objeto dado un id.
 		"imagen_avistamiento": "url-imagen",
 		"id_reporte": 5,
 	},
-	...
 ]
 ```
 - `204 No Content` si el elemento se modifico correctamente
@@ -729,7 +724,6 @@ Detalles sobre la clase Reporte_encontrado.
 	  "mascota_recojida": "string",
 	  "id_reporte": 5,
 	},
-	...
 ]
 ```
 - `204 No Content` si el elemento se modifico correctamente
@@ -825,7 +819,6 @@ Modifica los campos de un objeto dado un id.
 	   "ultimo_lugar_visto": "string",
 	   "id_reporte": 5,
 	},
-	...
 ]
 ```
 - `204 No Content` si el elemento se modifico correctamente
