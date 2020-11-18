@@ -20,14 +20,14 @@ Retorna los campos de un objeto Mascota dado un id.
 ```json
 [
     {
-	"nombre_mascota":"string",
-	"tipo_mascota":"string",
-	"raza_mascota":"string",
-	"descripcion_mascota":"string",
-	"codigo_qr":"string",
-	"foto_mascota":"url-imagen-perro",
-	"in_home":true,
-	"id_usuario": 5,
+	"nombre_mascota": "string",
+	"tipo_mascota": "string",
+	"raza_mascota": "string",
+	"descripcion_mascota": "string",
+	"codigo_qr": "string",
+	"foto_mascota": "url-imagen",
+	"in_home": true,
+	"id_usuario": 2,
     }
 ]
 ```
@@ -56,14 +56,14 @@ Retorna los campos de un objeto Mascota dado un id.
 ```json
 [
     {
-	"nombre_mascota":"string",
-	"tipo_mascota":"string",
-	"raza_mascota":"string",
-	"descripcion_mascota":"string",
-	"codigo_qr":"string",
-	"foto_mascota":"url-imagen-perro",
-	"in_home":true,
-	"id_usuario": 5,
+	"nombre_mascota": "string",
+	"tipo_mascota": "string",
+	"raza_mascota": "string",
+	"descripcion_mascota": "string",
+	"codigo_qr": "string",
+	"foto_mascota": "url-imagen",
+	"in_home": true,
+	"id_usuario": 2,
     }
 ]
 ```
@@ -82,14 +82,14 @@ Retorna los campos de un objeto Mascota dado un id.
 ```json
 [
     {
-	"nombre_mascota":"string",
-	"tipo_mascota":"string",
-	"raza_mascota":"string",
-	"descripcion_mascota":"string",
-	"codigo_qr":"string",
-	"foto_mascota":"url-imagen-perro",
-	"in_home":true,
-	"id_usuario": 5,
+	"nombre_mascota": "string",
+	"tipo_mascota": "string",
+	"raza_mascota": "string",
+	"descripcion_mascota": "string",
+	"codigo_qr": "string",
+	"foto_mascota": "url-imagen",
+	"in_home": true,
+	"id_usuario": 2,
     },
     ...
 ]
@@ -106,14 +106,14 @@ Campos del objeto:
 ```json
 [
     {
-	"nombre_mascota":"string",
-	"tipo_mascota":"string",
-	"raza_mascota":"string",
-	"descripcion_mascota":"string",
-	"codigo_qr":"string",
-	"foto_mascota":"url-imagen-perro",
-	"in_home":true,
-	"id_usuario": 5,
+	"nombre_mascota": "string",
+	"tipo_mascota": "string",
+	"raza_mascota": "string",
+	"descripcion_mascota": "string",
+	"codigo_qr": "string",
+	"foto_mascota": "url-imagen",
+	"in_home": true,
+	"id_usuario": 2,
     },
 ]
 ```
@@ -140,8 +140,8 @@ Detalles sobre la clase Mascota_perdida.
 ```json
 [
 	{
-		"id_mascota_perdida":5,
-		"id_mascota":5,
+		"id_mascota_perdida": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -157,8 +157,8 @@ Detalles sobre la clase Mascota_perdida.
 ```json
 [
 	{
-		"id_mascota_perdida":5,
-		"id_mascota":5,
+		"id_mascota_perdida": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -190,8 +190,8 @@ Detalles sobre la clase Mascota_perdida.
 ```json
 [
 	{
-		"id_mascota_perdida":5,
-		"id_mascota":5,
+		"id_mascota_perdida": 5,
+		"id_mascota": 5,
 	},
 	...
 ]
@@ -210,8 +210,8 @@ Campos del objeto:
 ```json
 [
 	{
-		"id_mascota_perdida":5,
-		"id_mascota":5,
+		"id_mascota_perdida": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -236,8 +236,8 @@ Campos del objeto:
 ```json
 [
 	{
-		"id_mascota_encontrada":5,
-		"id_mascota":5,
+		"id_mascota_encontrada": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -253,8 +253,8 @@ Campos del objeto:
 ```json
 [
 	{
-		"id_mascota_encontrada":5,
-		"id_mascota":5,
+		"id_mascota_encontrada": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -284,8 +284,8 @@ Retorna todas las mascotas encontradas en la tabla.
 ```json
 [
 	{
-		"id_mascota_encontrada":5,
-		"id_mascota":5,
+		"id_mascota_encontrada": 5,
+		"id_mascota": 5,
 	},
 	...
 ]
@@ -304,8 +304,8 @@ Campos del objeto:
 ```json
 [
 	{
-		"id_mascota_encontrada":5,
-		"id_mascota":5,
+		"id_mascota_encontrada": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -333,12 +333,12 @@ Detalles sobre la clase Usuario.
 [
 	{
 	        "correo_duenio":Email,
-	        "nombre_duenio":"string",
+	        "nombre_duenio": "string",
 	        "pais":Sring,
-	        "ciudad":"string",
-	        "colonia":"string",
-	        "calle":"string",
-	        "numero":"string",
+	        "ciudad": "string",
+	        "colonia": "string",
+	        "calle": "string",
+	        "numero": "string",
 	}
 ]
 ```
@@ -355,12 +355,12 @@ Detalles sobre la clase Usuario.
 [
 	{
 	       "correo_duenio":Email,
-	       "nombre_duenio":"string",
+	       "nombre_duenio": "string",
 	       "pais":Sring,
-	       "ciudad":"string",
-	       "colonia":"string",
-	       "calle":"string",
-	       "numero":"string",
+	       "ciudad": "string",
+	       "colonia": "string",
+	       "calle": "string",
+	       "numero": "string",
 	}
 ]
 ```
@@ -392,12 +392,12 @@ Detalles sobre la clase Usuario.
 [
 	{
 		"correo_duenio":Email,
-		"nombre_duenio":"string",
+		"nombre_duenio": "string",
 		"pais":Sring,
-		"ciudad":"string",
-		"colonia":"string",
-		"calle":"string",
-		"numero":"string",
+		"ciudad": "string",
+		"colonia": "string",
+		"calle": "string",
+		"numero": "string",
 	}
 ]
 ```
@@ -416,7 +416,7 @@ Detalles sobre la clase Usuario.
 [
 	{
 		"correo_duenio":Email,
-		"nombre_duenio":"string",
+		"nombre_duenio": "string",
 	}
 ]
 ```
@@ -442,11 +442,11 @@ Detalles sobre la clase Reporte.
 ```json
 [
 	{
-		"id_reporte":5,
+		"id_reporte": 5,
 		"fecha_reporte":Date,
-		"descripcion_reporte":"string",
-		"id_usuario":5,
-		"id_mascota":5,
+		"descripcion_reporte": "string",
+		"id_usuario": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -463,9 +463,9 @@ Detalles sobre la clase Reporte.
 [
 	{
 		"fecha_reporte":Date,
-		"descripcion_reporte":"string",
-		"id_usuario":5,
-		"id_mascota":5,
+		"descripcion_reporte": "string",
+		"id_usuario": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -498,9 +498,9 @@ Detalles sobre la clase Reporte.
 [
 	{
 		"fecha_reporte":Date,
-		"descripcion_reporte":"string",
-		"id_usuario":5,
-		"id_mascota":5,
+		"descripcion_reporte": "string",
+		"id_usuario": 5,
+		"id_mascota": 5,
 	}
 ]
 ```
@@ -518,11 +518,11 @@ Detalles sobre la clase Reporte.
 ```json
 [
 	{
-		"id_reporte":5,
+		"id_reporte": 5,
 		"fecha_reporte":Date,
-		"descripcion_reporte":"string",
-		"id_usuario":5,
-		"id_mascota":5,
+		"descripcion_reporte": "string",
+		"id_usuario": 5,
+		"id_mascota": 5,
 	},
 	...
 ]
@@ -549,10 +549,10 @@ Detalles sobre la clase Reporte_avistado.
 ```json
 [
 	{
-		"id_reporte_avistado":5,
-		"lugar_avistado":"string",
-		"imagen_avistamiento":"url-imagen-perro",
-		"id_reporte":5,
+		"id_reporte_avistado": 5,
+		"lugar_avistado": "string",
+		"imagen_avistamiento": "url-imagen",
+		"id_reporte": 5,
 	}
 ]
 ```
@@ -568,9 +568,9 @@ Detalles sobre la clase Reporte_avistado.
 ```json
 [
 	{
-		"lugar_avistado":"string",
-		"imagen_avistamiento":"url-imagen-perro",
-		"id_reporte":5,
+		"lugar_avistado": "string",
+		"imagen_avistamiento": "url-imagen",
+		"id_reporte": 5,
 	}
 ]
 ```
@@ -599,9 +599,9 @@ Elimina un objeto dado un id.
 ```json
 [
 	{
-		"lugar_avistado":"string",
-		"imagen_avistamiento":"url-imagen-perro",
-		"id_reporte":5,
+		"lugar_avistado": "string",
+		"imagen_avistamiento": "url-imagen",
+		"id_reporte": 5,
 	}
 ]
 ```
@@ -619,10 +619,10 @@ Elimina un objeto dado un id.
 ```json
 [
 	{
-		"id_reporte_avistado":5,
-		"lugar_avistado":"string",
-		"imagen_avistamiento":"url-imagen-perro",
-		"id_reporte":5,
+		"id_reporte_avistado": 5,
+		"lugar_avistado": "string",
+		"imagen_avistamiento": "url-imagen",
+		"id_reporte": 5,
 	},
 	...
 ]
@@ -648,11 +648,11 @@ Detalles sobre la clase Reporte_encontrado.
 ```json
 [
 	{
-	    "id_reporte_encontrado":5,
-	    "lugar_encontrado":"string",
-	    "imagen_encontrado":"url-imagen-perro",
-	    "mascota_recojida":"string",
-	    "id_reporte":5,
+	    "id_reporte_encontrado": 5,
+	    "lugar_encontrado": "string",
+	    "imagen_encontrado": "url-imagen",
+	    "mascota_recojida": "string",
+	    "id_reporte": 5,
 	}
 ]
 ```
@@ -668,9 +668,9 @@ Detalles sobre la clase Reporte_encontrado.
 ```json
 [
 	{
-	  "lugar_encontrado":"string",
-	  "imagen_encontrado":"url-imagen-perro",
-	  "mascota_recojida":"string",
+	  "lugar_encontrado": "string",
+	  "imagen_encontrado": "url-imagen",
+	  "mascota_recojida": "string",
 	}
 ]
 ```
@@ -702,9 +702,9 @@ Detalles sobre la clase Reporte_encontrado.
 ```json
 [
 	{
-	  "lugar_encontrado":"string",
-	  "imagen_encontrado":"url-imagen-perro",
-	  "mascota_recojida":"string",
+	  "lugar_encontrado": "string",
+	  "imagen_encontrado": "url-imagen",
+	  "mascota_recojida": "string",
 	}
 ]
 ```
@@ -723,11 +723,11 @@ Detalles sobre la clase Reporte_encontrado.
 ```json
 [
 	{
-	  "id_reporte_encontrado":5,
-	  "lugar_encontrado":"string",
-	  "imagen_encontrado":"url-imagen-perro",
-	  "mascota_recojida":"string",
-	  "id_reporte":5,
+	  "id_reporte_encontrado": 5,
+	  "lugar_encontrado": "string",
+	  "imagen_encontrado": "url-imagen",
+	  "mascota_recojida": "string",
+	  "id_reporte": 5,
 	},
 	...
 ]
@@ -755,9 +755,9 @@ Detalles sobre la clase Reporte_perdido.
 ```json
 [
 	{
-	    "id_reporte_perdido":5,
-	    "ultimo_lugar_visto":"string",
-	    "id_reporte":5,
+	    "id_reporte_perdido": 5,
+	    "ultimo_lugar_visto": "string",
+	    "id_reporte": 5,
 	}
 ]
 ```
@@ -770,7 +770,7 @@ Modifica los campos de un objeto dado un id.
 ```json
 [
 	{
-	    "ultimo_lugar_visto":"string",
+	    "ultimo_lugar_visto": "string",
 	}
 ]
 ```
@@ -800,9 +800,9 @@ Modifica los campos de un objeto dado un id.
 ```json
 [
 	{
-	    "id_reporte_perdido":5,
-	    "ultimo_lugar_visto":"string",
-	    "id_reporte":5,
+	    "id_reporte_perdido": 5,
+	    "ultimo_lugar_visto": "string",
+	    "id_reporte": 5,
 	}
 ]
 ```
@@ -821,9 +821,9 @@ Modifica los campos de un objeto dado un id.
 ```json
 [
 	{
-	   "id_reporte_perdido":5,
-	   "ultimo_lugar_visto":"string",
-	   "id_reporte":5,
+	   "id_reporte_perdido": 5,
+	   "ultimo_lugar_visto": "string",
+	   "id_reporte": 5,
 	},
 	...
 ]
