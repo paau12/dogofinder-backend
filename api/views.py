@@ -34,24 +34,6 @@ from .models import *
 from .serializers import *
 
 
-@api_view(['GET', 'PUT', 'DELETE', 'POST'])
-def prueba_request(request):
-    if request.method == 'GET':
-        return Response('Request GET')
-
-    elif request.method == 'PUT':
-        return Response('Request PUT')
-
-    elif request.method == 'DELETE':
-        return Response('Request DELETE')
-
-    elif request.method == 'POST':
-        return Response('Request POST {}'.format(request.data.get('id')))
-
-    else:
-        return Response('Request desconocido')
-
-
 ''' --------| Views para clase Reporte. |-------- '''
 
 
