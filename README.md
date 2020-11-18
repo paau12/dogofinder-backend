@@ -26,7 +26,7 @@ Retorna los campos de un objeto Mascota dado un id.
 	"descripcion_mascota":"string",
 	"codigo_qr":"string",
 	"foto_mascota":"url-imagen-perro",
-	"in_home":Bool,
+	"in_home":true,
 	"id_usuario": 5,
     }
 ]
@@ -62,7 +62,7 @@ Retorna los campos de un objeto Mascota dado un id.
 	"descripcion_mascota":"string",
 	"codigo_qr":"string",
 	"foto_mascota":"url-imagen-perro",
-	"in_home":Bool,
+	"in_home":true,
 	"id_usuario": 5,
     }
 ]
@@ -88,7 +88,7 @@ Retorna los campos de un objeto Mascota dado un id.
 	"descripcion_mascota":"string",
 	"codigo_qr":"string",
 	"foto_mascota":"url-imagen-perro",
-	"in_home":Bool,
+	"in_home":true,
 	"id_usuario": 5,
     },
     ...
@@ -112,7 +112,7 @@ Campos del objeto:
 	"descripcion_mascota":"string",
 	"codigo_qr":"string",
 	"foto_mascota":"url-imagen-perro",
-	"in_home":Bool,
+	"in_home":true,
 	"id_usuario": 5,
     },
 ]
