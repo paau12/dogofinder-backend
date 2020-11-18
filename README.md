@@ -297,13 +297,13 @@ Retorna un objeto usuario dado un id.
 ```json
 [
 	{
-	        'correo_duenio':Email,
-	        'nombre_duenio':String,
-	        'pais':Sring,
-	        'ciudad':String,
-	        'colonia':String,
-	        'calle':String,
-	        'numero':String,
+	        "correo_duenio":Email,
+	        "nombre_duenio":String,
+	        "pais":Sring,
+	        "ciudad":String,
+	        "colonia":String,
+	        "calle":String,
+	        "numero":String,
 	}
 ]
 ```
@@ -316,13 +316,13 @@ Modifica los campos de un objeto usuario dado un id.
 ```json
 [
 	{
-	       'correo_duenio':Email,
-	       'nombre_duenio':String,
-	       'pais':Sring,
-	       'ciudad':String,
-	       'colonia':String,
-	       'calle':String,
-	       'numero':String,
+	       "correo_duenio":Email,
+	       "nombre_duenio":String,
+	       "pais":Sring,
+	       "ciudad":String,
+	       "colonia":String,
+	       "calle":String,
+	       "numero":String,
 	}
 ]
 ```
@@ -347,13 +347,13 @@ Crea un registro para un objeto usuario.
 ```json
 [
 	{
-		'correo_duenio':Email,
-		'nombre_duenio':String,
-		'pais':Sring,
-		'ciudad':String,
-		'colonia':String,
-		'calle':String,
-		'numero':String,
+		"correo_duenio":Email,
+		"nombre_duenio":String,
+		"pais":Sring,
+		"ciudad":String,
+		"colonia":String,
+		"calle":String,
+		"numero":String,
 	}
 ]
 ```
@@ -368,8 +368,8 @@ Registra un usuario.
 ```json
 [
 	{
-		'correo_duenio':Email,
-		'nombre_duenio':String,
+		"correo_duenio":Email,
+		"nombre_duenio":String,
 	}
 ]
 ```
