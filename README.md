@@ -329,9 +329,9 @@ Detalles sobre la clase Usuario.
 ```json
 [
 	{
-	        "correo_duenio":Email,
+	        "correo_duenio": "string",
 	        "nombre_duenio": "string",
-	        "pais":Sring,
+	        "pais": "string",
 	        "ciudad": "string",
 	        "colonia": "string",
 	        "calle": "string",
@@ -440,7 +440,7 @@ Detalles sobre la clase Reporte.
 [
 	{
 		"id_reporte": 5,
-		"fecha_reporte":Date,
+		"fecha_reporte": "string",
 		"descripcion_reporte": "string",
 		"id_usuario": 5,
 		"id_mascota": 5,
