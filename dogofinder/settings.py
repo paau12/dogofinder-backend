@@ -43,10 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Local
-    'api',
+    # 3-rd party
     'rest_framework',
     'rest_framework.authtoken',  # New
+
+    # Local
+    'api.apps.ApiConfig',
 ]
 
 MIDDLEWARE = [
@@ -145,6 +147,7 @@ STATIC_URL = '/static/'
 """
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.permissions.AllowAny',  # new
         'rest_framework.authentication.TokenAuthentication'
     ],
     'DEFAULT_PERMISSION_CLASSES': [],
