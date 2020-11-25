@@ -1,826 +1,111 @@
 # dogofinder-backend
-DogoFinder Platform API
+DogoFinder Platform API - v1
 
+## Endpoint
 
-## Mascotas
+Todas las peticiones de la API tienen como base la siguiente URL
+```url
+http://dogofinder.herokuapp.com/api/v1/
+```
 
-### Detalles sobre la clase Mascota.
+## Autenticación
+
+### Registro de usuarios
+
+Los usuarios se pueden registrar con un nombre de usuario, un correo, y una contraseña. La contraseña debe ser validada dos veces para poder proceder.
 
 **Definición**
 
-`GET api/v1/mascotas/id`
-
-Retorna los campos de un objeto Mascota dado un id.
+`POST api/v1/auth/signup/`
 
 **Argumentos**
-- `"id":int`	Identificador de objeto.
+- `"username":string`, nombre de usuario
+- `"email":string`, correo electrónico del usuario
+- `"password1":string`, contraseña deseada
+- `"password2":string`, confirmación de contraseña deseada
 
-**Respuesta:**
-- Si se encuentra un objeto con el id dado:
+**Respuesta**
+- Si todos los campos son validados correctamente, se regresará un token de autenticación. 
+- Este token debe ser almacenado en el front-end por localStorage o por cookies para la persistencia de sesión del usuario.
 ```json
-[
-    {
-	"nombre_mascota": "string",
-	"tipo_mascota": "string",
-	"raza_mascota": "string",
-	"descripcion_mascota": "string",
-	"codigo_qr": "string",
-	"foto_mascota": "url-imagen",
-	"in_home": true,
-	"id_usuario": 2,
-    }
-]
+HTTP 201 Created
+Allow: POST, OPTIONS
+Content-Type: application/json
+Vary: Accept
+
+{
+    "key": "84321390802990df5ac0809c9066b3fcc3bee731"
+}
 ```
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
 
-### Elimina un objeto Mascota
+- Si hay algún campo obligatorio faltante:
 
-**Definicion**
+```json
+HTTP 400 Bad Request
+Allow: POST, OPTIONS
+Content-Type: application/json
+Vary: Accept
 
-`DELETE api/v1/mascotas/id`
+{
+    "username": [
+        "This field may not be blank."
+    ],
+    "password1": [
+        "This field may not be blank."
+    ],
+    "password2": [
+        "This field may not be blank."
+    ]
+}
+```
 
-**Respuesta:**
-- `204 No Content` si el elemento se elimino correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
+### Iniciar sesión con una cuenta ya registrada
 
-### Re-escribe los campos de un objeto mascota dado un id.
+Una vez que el usuario está registrado, puede ingresar con su nombre de usuario y contraseña.
 
 **Definición**
 
-`PUT api/v1/mascotas/id`
-
-
-**Parametros**
-```json
-[
-    {
-	"nombre_mascota": "string",
-	"tipo_mascota": "string",
-	"raza_mascota": "string",
-	"descripcion_mascota": "string",
-	"codigo_qr": "string",
-	"foto_mascota": "url-imagen",
-	"in_home": true,
-	"id_usuario": 2,
-    }
-]
-```
-
-**Respuesta:**
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Obtener todas las mascotas existentes
-
-`GET api/v1/mascotas/`
-
-**Respuesta:**
-- Por cada mascota existente:
-```json
-[
-    {
-	"nombre_mascota": "string",
-	"tipo_mascota": "string",
-	"raza_mascota": "string",
-	"descripcion_mascota": "string",
-	"codigo_qr": "string",
-	"foto_mascota": "url-imagen",
-	"in_home": true,
-	"id_usuario": 2,
-    },
-]
-```
-- `400 Bad Request` si la petición esta mal formulada
-
-### Inserta un nuevo objeto mascota a la tabla.
-
-**Definición**
-
-`POST api/v1/mascotas/`
-
-Campos del objeto:
-```json
-[
-    {
-	"nombre_mascota": "string",
-	"tipo_mascota": "string",
-	"raza_mascota": "string",
-	"descripcion_mascota": "string",
-	"codigo_qr": "string",
-	"foto_mascota": "url-imagen",
-	"in_home": true,
-	"id_usuario": 2,
-    },
-]
-```
-
-**Respuesta:**
-- `201 Created` si el objeto es almacenado correctamente
-- `400 Bad Request` si la petición esta mal formulada
-
-
-## Mascota Perdida
-
-Detalles sobre la clase Mascota_perdida.
+`POST /api/v1/auth/login/`
 
 **Argumentos**
-- `"id":int`	Identificador de objeto.
+- `"username":string`, nombre de usuario
+- `"password":string`, contraseña deseada
 
-### Obtener las mascotas perdidas con su id
-
-**Definición**
-
-`GET api/v1/mascota_perdida/id`
-
-**Respuesta:**
+**Respuesta**
+- Si todos los campos son validados correctamente, se regresará un token de autenticación.
+- Este token debe ser almacenado en el front-end por localStorage o por cookies para la persistencia de sesión del usuario.
 ```json
-[
-	{
-		"id_mascota_perdida": 5,
-		"id_mascota": 5,
-	}
-]
-```
-- `404 Not Found` si el identificador no existe
+HTTP 200 OK
+Allow: POST, OPTIONS
+Content-Type: application/json
+Vary: Accept
 
-### Modifica los campos de una mascota perdida
-
-**Definición**
-
-`PUT api/v1/mascota_perdida/id`
-
-**Parametros**
-```json
-[
-	{
-		"id_mascota_perdida": 5,
-		"id_mascota": 5,
-	}
-]
+{
+    "key": "13336c24a8018955b74a058b5a43fa8e58a552cc"
+}
 ```
 
-**Respuesta:**
-
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Elimina un objeto Mascota_perdida de la tabla
-
-**Definición**
-
-`DELETE api/v1/mascota_perdida/id`
-
-**Respuesta:**
-- `204 No Content` si el elemento se elimino correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Retorna todas las mascotas perdidas en la tabla.
-
-**Definición**
-
-`GET api/v1/mascota_perdida/`
-
-**Respuesta:**
-```json
-[
-	{
-		"id_mascota_perdida": 5,
-		"id_mascota": 5,
-	},
-]
-```
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Agrega un objeto Mascota_perdida a la tabla
-
-**Definición**
-
-`POST api/v1/mascota_perdida/`
-
-Campos del objeto:
-```json
-[
-	{
-		"id_mascota_perdida": 5,
-		"id_mascota": 5,
-	}
-]
-```
-
-**Respuesta:**
-- `400 Bad Request` si la petición esta mal formulada
-- `201 Created` si el objeto es almacenado correctamente
-
-
-## Mascota Encontrada
-
-### Obtener detalles sobre la mascota
-
-**Definición**
-
-`GET api/v1/mascota_encontrada/id`
-
-**Argumentos**
-- `"id":int`	Identificador de objeto.
-
-**Respuesta:**
-```json
-[
-	{
-		"id_mascota_encontrada": 5,
-		"id_mascota": 5,
-	}
-]
-```
-- `404 Not Found` si el identificador no existe
-
-## Modificar los campos de una mascota encontrada con un id
-
-**Definición**
-
-`PUT api/v1/mascota_encontrada/<id>`
-
-**Parametros**
-```json
-[
-	{
-		"id_mascota_encontrada": 5,
-		"id_mascota": 5,
-	}
-]
-```
-
-**Respuesta:**
-
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-
-### Elimina un objeto Mascota_encontrada de la tabla
-
-**Definición**
-
-`DELETE api/v1/mascota_encontrada/id`
-
-**Respuesta:**
-- `204 No Content` si el elemento se elimino correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-Retorna todas las mascotas encontradas en la tabla.
-`GET api/v1/mascota_encontrada/`
-
-**Respuesta:**
-```json
-[
-	{
-		"id_mascota_encontrada": 5,
-		"id_mascota": 5,
-	},
-]
-```
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Agregar una mascota encontrada
-
-**Definición**
-
-`POST api/v1/mascota_encontrada/`
-
-Campos del objeto:
-```json
-[
-	{
-		"id_mascota_encontrada": 5,
-		"id_mascota": 5,
-	}
-]
-```
-
-**Respuesta:**
-- `400 Bad Request` si la petición esta mal formulada
-- `201 Created` si el objeto es almacenado correctamente
-
-
-## Usuario
-
-Detalles sobre la clase Usuario.
-
-### Retorna un objeto usuario dado un id.
-
-**Definiciones**
-
-`GET api/v1/usuario/id`
-
-**Argumentos**
-- `"id":int`	Identificador de objeto.
-
-**Respuesta:**
-```json
-[
-	{
-	        "correo_duenio": "string",
-	        "nombre_duenio": "string",
-	        "pais": "string",
-	        "ciudad": "string",
-	        "colonia": "string",
-	        "calle": "string",
-	        "numero": "string",
-	}
-]
-```
-- `404 Not Found` si el identificador no existe
-
-### Modificar los datos de un usuario con su id
-
-**Definición**
-
-`PUT api/v1/usuario/id`
-
-**Parametros**
-```json
-[
-	{
-	       "correo_duenio": "string",
-	       "nombre_duenio": "string",
-	       "pais": "string",
-	       "ciudad": "string",
-	       "colonia": "string",
-	       "calle": "string",
-	       "numero": "string",
-	}
-]
-```
-**Respuesta:**
-
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Elimina un objeto usuario de la tabla dado un id.
-
-**Definición**
-
-`DELETE api/v1/usuario/id`
-
-**Respuesta:**
-- `204 No Content` si el elemento se elimino correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Crea un registro para un objeto usuario.
-
-**Definición**
-
-`POST api/v1/registro`
-
-**Parametros**
-```json
-[
-	{
-		"correo_duenio": "string",
-		"nombre_duenio": "string",
-		"pais": "string",
-		"ciudad": "string",
-		"colonia": "string",
-		"calle": "string",
-		"numero": "string",
-	}
-]
-```
-**Respuesta:**
-- `400 Bad Request` si la petición esta mal formulada
-- `201 Created` si el objeto es almacenado correctamente
-
-### Registra un usuario.
-
-**Definición**
-
-`POST api/v1/usuario`
-
-**Parametros**
-```json
-[
-	{
-		"correo_duenio": "string",
-		"nombre_duenio": "string",
-	}
-]
-```
-**Respuesta:**
-- `400 Bad Request` si la petición esta mal formulada
-- `201 Created` si el objeto es almacenado correctamente
-
-
-## Reporte
-
-Detalles sobre la clase Reporte.
-
-**Argumentos**
-- `"id":int`	Identificador de objeto.
-
-### Retorna un objeto Reporte dado un id.
-
-**Definición**
-
-`GET api/v1/reporte/id`
-
+- Si la contraseña es incorrecta:
 
 ```json
-[
-	{
-		"id_reporte": 5,
-		"fecha_reporte": "string",
-		"descripcion_reporte": "string",
-		"id_usuario": 5,
-		"id_mascota": 5,
-	}
-]
-```
-- `404 Not Found` si el identificador no existe
+HTTP 400 Bad Request
+Allow: POST, OPTIONS
+Content-Type: application/json
+Vary: Accept
 
-### Modifica los campos de un reporte con su id.
+{
+    "non_field_errors": [
+        "Unable to log in with provided credentials."
+    ]
+}
+```
+
+### Cerrar sesión de una cuenta activa
+
+Para que el usuario cierre sesión de la cuenta activa, basta con hacer una petición GET.
 
 **Definición**
 
-`PUT api/v1/reporte/id`
+`GET /api/v1/auth/logout/`
 
-**Parametros**
-```json
-[
-	{
-		"fecha_reporte": "string",
-		"descripcion_reporte": "string",
-		"id_usuario": 5,
-		"id_mascota": 5,
-	}
-]
-```
-**Respuesta:**
-
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Elimina un reporte con su id.
-
-**Definición**
-
-`DELETE api/v1/reporte/id
-
-**Respuesta:**
-- `204 No Content` si el elemento se elimino correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-
-### Agrega un objeto Reporte a la tabla.
-
-**Definición**
-
-`POST api/v1/reporte/`
-
-**Parametros**
-```json
-[
-	{
-		"fecha_reporte": "string",
-		"descripcion_reporte": "string",
-		"id_usuario": 5,
-		"id_mascota": 5,
-	}
-]
-```
-**Respuesta:**
-- `400 Bad Request` si la petición esta mal formulada
-- `201 Created` si el objeto es almacenado correctamente
-
-### Retorna todos los objetos en la tabla Reporte.`
-
-**Definición**
-
-`GET api/v1/reporte/`
-
-**Respuesta:**
-```json
-[
-	{
-		"id_reporte": 5,
-		"fecha_reporte": "string",
-		"descripcion_reporte": "string",
-		"id_usuario": 5,
-		"id_mascota": 5,
-	},
-]
-```
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-
-
-## Reporte avistado
-
-Detalles sobre la clase Reporte_avistado.
-
-**Argumentos**
-- `"id":int`	Identificador de objeto.
-
-### Retorna un objeto Reporte_avistado dado un id.
-
-**Definición**
-
-`GET api/v1/reporte_avistado/id`
-
-```json
-[
-	{
-		"id_reporte_avistado": 5,
-		"lugar_avistado": "string",
-		"imagen_avistamiento": "url-imagen",
-		"id_reporte": 5,
-	}
-]
-```
-- `404 Not Found` si el identificador no existe
-
-### Modifica los campos de un objeto "reporte_avistado" con su id.
-
-**Definición**
-
-`PUT api/v1/reporte_avistado/id`
-
-**Parametros**
-```json
-[
-	{
-		"lugar_avistado": "string",
-		"imagen_avistamiento": "url-imagen",
-		"id_reporte": 5,
-	}
-]
-```
-**Respuesta:**
-
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-Elimina un objeto dado un id.
-`DELETE api/v1/reporte_avistado/id
-
-**Respuesta:**
-- `204 No Content` si el elemento se elimino correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-
-### Agrega un objeto Reporte_avistado a la base de datos
-
-**Definición**
-
-`POST api/v1/reporte_avistado/`
-
-**Parametros**
-```json
-[
-	{
-		"lugar_avistado": "string",
-		"imagen_avistamiento": "url-imagen",
-		"id_reporte": 5,
-	}
-]
-```
-**Respuesta:**
-- `400 Bad Request` si la petición esta mal formulada
-- `201 Created` si el objeto es almacenado correctamente
-
-### Obtener todos los reportes de los perritos avistados
-
-**Definición**
-
-`GET api/v1/reporte_avistado/`
-
-**Respuesta:**
-```json
-[
-	{
-		"id_reporte_avistado": 5,
-		"lugar_avistado": "string",
-		"imagen_avistamiento": "url-imagen",
-		"id_reporte": 5,
-	},
-]
-```
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-
-## Reporte encontrado
-
-Detalles sobre la clase Reporte_encontrado.
-
-**Argumentos**
-- `"id":int`	Identificador de objeto.
-
-### Retorna un objeto Reporte_encontrado dado un id.
-
-**Definición**
-
-`GET api/v1/reporte_encontrado/id`
-
-```json
-[
-	{
-	    "id_reporte_encontrado": 5,
-	    "lugar_encontrado": "string",
-	    "imagen_encontrado": "url-imagen",
-	    "mascota_recojida": "string",
-	    "id_reporte": 5,
-	}
-]
-```
-- `404 Not Found` si el identificador no existe
-
-### Modifica los campos de un "reporte avistado" con su id
-
-**Definición**
-
-`PUT api/v1/reporte_encontrado/id`
-
-**Parametros**
-```json
-[
-	{
-	  "lugar_encontrado": "string",
-	  "imagen_encontrado": "url-imagen",
-	  "mascota_recojida": "string",
-	}
-]
-```
-**Respuesta:**
-
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Elimina un reporte de un perrito avistado con su id
-
-**Definición**
-
-`DELETE api/v1/reporte_encontrado/id`
-
-**Respuesta:**
-- `204 No Content` si el elemento se elimino correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-
-### Agrega un objeto Reporte_encontrado a la tabla.
-
-**Definición**
-
-`POST api/v1/reporte_encontrado/`
-
-**Parametros**
-```json
-[
-	{
-	  "lugar_encontrado": "string",
-	  "imagen_encontrado": "url-imagen",
-	  "mascota_recojida": "string",
-	}
-]
-```
-**Respuesta:**
-- `400 Bad Request` si la petición esta mal formulada
-- `201 Created` si el objeto es almacenado correctamente
-
-
-### Retorna todos los objetos en la tabla Reporte_encontrado.
-
-**Definición**
-
-`GET api/v1/reporte_encontrado/`
-
-**Respuesta:**
-```json
-[
-	{
-	  "id_reporte_encontrado": 5,
-	  "lugar_encontrado": "string",
-	  "imagen_encontrado": "url-imagen",
-	  "mascota_recojida": "string",
-	  "id_reporte": 5,
-	},
-]
-```
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-
-## Reporte perdido
-
-Detalles sobre la clase Reporte_perdido.
-
-**Argumentos**
-- `"id":int`	Identificador de objeto.
-
-**Definiciones**
-
-### Obtener el reporte de un perrito perdido con su id.
-
-**Definición**
-
-`GET api/v1/reporte_perdido/id`
-
-```json
-[
-	{
-	    "id_reporte_perdido": 5,
-	    "ultimo_lugar_visto": "string",
-	    "id_reporte": 5,
-	}
-]
-```
-- `404 Not Found` si el identificador no existe
-
-Modifica los campos de un objeto dado un id.
-`PUT api/v1/reporte_perdido/id`
-
-**Parametros**
-```json
-[
-	{
-	    "ultimo_lugar_visto": "string",
-	}
-]
-```
-**Respuesta:**
-
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-### Elimina un objeto dado un id.
-
-`DELETE api/v1/reporte_perdido/id`
-
-**Respuesta:**
-- `204 No Content` si el elemento se elimino correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
-
-
-### Agrega un perrito perdido a la base de datos
-
-**Definición**
-
-`POST api/v1/reporte_perdido/`
-
-**Parametros**
-```json
-[
-	{
-	    "id_reporte_perdido": 5,
-	    "ultimo_lugar_visto": "string",
-	    "id_reporte": 5,
-	}
-]
-```
-**Respuesta:**
-- `400 Bad Request` si la petición esta mal formulada
-- `201 Created` si el objeto es almacenado correctamente
-
-
-### Obtener todos los reportes de perritos perdidos
-
-**Definición**
-
-`GET api/v1/reporte_perdido/`
-
-**Respuesta:**
-```json
-[
-	{
-	   "id_reporte_perdido": 5,
-	   "ultimo_lugar_visto": "string",
-	   "id_reporte": 5,
-	},
-]
-```
-- `204 No Content` si el elemento se modifico correctamente
-- `404 Not Found` si el identificador no existe
-- `400 Bad Request` si la petición esta mal formulada
+Esta petición no acepta ni regresa nada. Solo elimina el token del usuario con la cuenta activa.
