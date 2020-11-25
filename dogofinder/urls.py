@@ -25,9 +25,9 @@ urlpatterns = [
     # path('api/', include(router.urls))
 
     # api app
-    url(r'^', include('api.urls')),
+    url('api/v1/', include('api.urls')),
     url(
-        r'^api-auth/',
+        'api-auth/',
         include('rest_framework.urls', namespace='rest_framework')
     ),
 ]

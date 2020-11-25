@@ -6,82 +6,82 @@ from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
     path(
-        'api/v1/mascotas/<int:id>',
+        'mascotas/<int:id>',
         views.get_delete_update_mascota,
         name='get_delete_update_mascota'
     ),
     path(
-        'api/v1/mascotas/',
+        'mascotas/',
         views.get_post_mascotas,
         name='get_post_mascotas'
     ),
     path(
-        'api/v1/mascota_perdida/<int:id>',
+        'mascota_perdida/<int:id>/',
         views.GPD_mascota_perdida,
         name='GPD_mascota_perdida'
     ),
     path(
-        'api/v1/mascota_perdida/',
+        'mascota_perdida/',
         views.post_mascota_perdida,
         name='post_mascota_perdida'
     ),
     path(
-        'api/v1/mascota_encontrada/<int:id>',
+        'mascota_encontrada/<int:id>/',
         views.GPD_mascota_encontrada,
         name='GPD_mascota_encontrada'
     ),
     path(
-        'api/v1/mascota_encontrada/',
+        'mascota_encontrada/',
         views.post_mascota_encontrada,
         name='post_mascota_encontrada'
     ),
     path(
-        'api/v1/usuario/<int:id>',
+        'usuario/<int:id>/',
         views.GPD_usuario,
         name='GPD_usuario'
     ),
     path(
-        'api/v1/registro/',
+        'registro/',
         views.crear_usuario,
         name='crear_usuario'
     ),
     path(
-        'api/v1/login/',
+        'login/',
         obtain_auth_token,
         name='login'
     ),
     path(
-        'api/v1/usuario/',
+        'usuario/',
         views.post_usuario,
         name='post_usuario'
     ),
     path(
-        'api/v1/reporte/<int:id>',
+        'reporte/<int:id>/',
         views.GPD_reporte,
         name='GPD_reporte'
     ),
     path(
-        'api/v1/reporte/',
+        'reporte/',
         views.post_reporte,
         name='post_reporte'
     ),
     path(
-        'api/v1/reporte/<int:id>',
+        'reporte/<int:id>/',
         views.GPD_reporte,
         name='GPD_reporte'
     ),
     path(
-        'api/v1/reporte_avistado/',
+        'reporte_avistado/',
         views.post_reporte_avistado,
         name='GPD_reporte_avistado'
     ),
     path(
-        'api/v1/reporte_encontrado/',
+        'reporte_encontrado/',
         views.post_reporte_encontrado,
         name='GPD_reporte_encontrado'
     ),
     path(
-        'api/v1/reporte_perdido/',
+        'reporte_perdido/',
         views.post_reporte_perdido,
         name='GPD_reporte_perdido'
     ),
