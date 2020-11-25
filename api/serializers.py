@@ -37,34 +37,34 @@ class Usuario_serializer(serializers.ModelSerializer):
 
 
 # Serializador para registro de usuario
-class UsuarioRegistroSerializer(serializers.ModelSerializer):
-    confirm_password = serializers.CharField(
-        style={'input_type': 'password'}, write_only=True)
+# class UsuarioRegistroSerializer(serializers.ModelSerializer):
+#     confirm_password = serializers.CharField(
+#         style={'input_type': 'password'}, write_only=True)
 
-    class Meta:
-        model = UsuarioRegistro
-        fields = ['username', 'email', 'password', 'confirm_password']
-        extra_kwargs = {
-            'password': {'write_only': True}
-        }
+#     class Meta:
+#         model = UsuarioRegistro
+#         fields = ['username', 'email', 'password', 'confirm_password']
+#         extra_kwargs = {
+#             'password': {'write_only': True}
+#         }
 
-    def save(self):
-        usuario_registro = UsuarioRegistro(
-            username=self.validated_data['username'],
-            email=self.validated_data['email'],
-        )
+#     def save(self):
+#         usuario_registro = UsuarioRegistro(
+#             username=self.validated_data['username'],
+#             email=self.validated_data['email'],
+#         )
 
-        password = self.validated_data['password']
-        confirm_password = self.validated_data['confirm_password']
+#         password = self.validated_data['password']
+#         confirm_password = self.validated_data['confirm_password']
 
-        if password != confirm_password:
-            raise serializers.ValidationError(
-                {'error': 'Las contraseñas deben coincidir.'})
+#         if password != confirm_password:
+#             raise serializers.ValidationError(
+#                 {'error': 'Las contraseñas deben coincidir.'})
 
-        usuario_registro.set_password(password)
+#         usuario_registro.set_password(password)
 
-        usuario_registro.save()
-        return usuario_registro
+#         usuario_registro.save()
+#         return usuario_registro
 
 
 ''' --------| Serializador para Reporte. |-------- '''
