@@ -9,10 +9,11 @@ https://docs.djangoproject.com/en/3.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
+import django_heroku
 
 import os
 
-from dotenv import load_dotenv  # new
+from dotenv import load_dotenv
 
 
 load_dotenv()  # New
@@ -182,3 +183,7 @@ REST_FRAMEWORK = {
 # Django ALL AUTH
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # new
 SITE_ID = 1  # new - This allows Django to host multiple websites - Used by dj-allauth
+
+
+# Activate Django-Heroku.
+django_heroku.settings(locals())
