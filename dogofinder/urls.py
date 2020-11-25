@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 
-from api.router import router  # New
+# from api.router import router  # New
 
 
 urlpatterns = [
