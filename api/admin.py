@@ -5,7 +5,7 @@ from .models import *
 # Register your models here.
 admin.site.register(Mascota)
 admin.site.register(Usuario)
-admin.site.register(UsuarioRegistro)  # Nuevo
+# admin.site.register(UsuarioRegistro)  # Nuevo
 admin.site.register(Mascota_perdida)
 admin.site.register(Mascota_encontrada)
 admin.site.register(Reporte)
