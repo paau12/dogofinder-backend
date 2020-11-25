@@ -106,6 +106,6 @@ Para que el usuario cierre sesión de la cuenta activa, basta con hacer una peti
 
 **Definición**
 
-`GET /api/v1/auth/logout/`
+`POST /api/v1/auth/logout/`
 
 Esta petición no acepta ni regresa nada. Solo elimina el token del usuario con la cuenta activa.
