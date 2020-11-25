@@ -42,10 +42,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',  # new
 
     # 3-rd party
+    'allauth',  # new
+    'allauth.account',  # new
+    'allauth.socialaccount',  # new
+
+    'dj_rest_auth',
+    'dj_rest_auth.registration',  # new
+
     'rest_framework',
-    'rest_framework.authtoken',  # New
+    'rest_framework.authtoken',
 
     # Local
     'api.apps.ApiConfig',
@@ -145,13 +153,32 @@ STATIC_URL = '/static/'
     access to certain endpoints. Make sure to update this.
     Review the docs for more information.
 """
+# REST_FRAMEWORK = {
+#     'DEFAULT_AUTHENTICATION_CLASSES': [
+#         # 'rest_framework.permissions.AllowAny',  # new
+#         'rest_framework.authentication.TokenAuthentication'
+#     ],
+#     'DEFAULT_PERMISSION_CLASSES': [],
+#     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+# }
+
+# AUTH_USER_MODEL = 'api.UsuarioRegistro'
+
+# DRF
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        # 'rest_framework.permissions.AllowAny',  # new
-        'rest_framework.authentication.TokenAuthentication'
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
     ],
-    'DEFAULT_PERMISSION_CLASSES': [],
-    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
+
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # This is for the Browsable API (Log in, log out)
+        # Default config made explicit
+        'rest_framework.authentication.SessionAuthentication',
+
+        'rest_framework.authentication.TokenAuthentication',  # new
+    ],
 }
 
-AUTH_USER_MODEL = 'api.UsuarioRegistro'
+# Django ALL AUTH
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # new
+SITE_ID = 1  # new - This allows Django to host multiple websites - Used by dj-allauth

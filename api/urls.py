@@ -40,16 +40,16 @@ urlpatterns = [
         views.GPD_usuario,
         name='GPD_usuario'
     ),
-    path(
-        'registro/',
-        views.crear_usuario,
-        name='crear_usuario'
-    ),
-    path(
-        'login/',
-        obtain_auth_token,
-        name='login'
-    ),
+    # path(
+    #     'registro/',
+    #     views.crear_usuario,
+    #     name='crear_usuario'
+    # ),
+    # path(
+    #     'login/',
+    #     obtain_auth_token,
+    #     name='login'
+    # ),
     path(
         'usuario/',
         views.post_usuario,

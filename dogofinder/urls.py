@@ -25,8 +25,11 @@ urlpatterns = [
     # path('api/', include(router.urls))
 
     # api app
-    url('api/v1/', include('api.urls')),
-    url(
+    path('api/v1/', include('api.urls')),
+    path('api/v1/auth/', include('dj_rest_auth.urls')),  # login
+    path('api/v1/auth/signup/',
+         include('dj_rest_auth.registration.urls')),  # signup
+    path(
         'api-auth/',
         include('rest_framework.urls', namespace='rest_framework')
     ),
